@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import { SetUpRoutes } from "./routes";
+import { setUpRoutes } from "./routes";
 import { requestInfo } from "./middlewares";
 
 class App {
@@ -18,7 +18,7 @@ class App {
   }
 
   routes() {
-    SetUpRoutes(this.app);
+    setUpRoutes(this.app);
   }
 }
 
