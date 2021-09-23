@@ -1,7 +1,6 @@
 import bucket from "../../config/storage";
-export async function getAll(request, response) {
-  const { params } = request;
-  const { id_palavra } = params;
+export async function getAll(req, res) {
+  const { id_palavra } = req.params;
   const files = await bucket.getFiles({
     prefix: id_palavra + "/",
   });
@@ -13,5 +12,5 @@ export async function getAll(request, response) {
       download_url: metadata.mediaLink,
     };
   });
-  response.send(files_array);
+  res.send(files_array);
 }

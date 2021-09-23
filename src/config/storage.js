@@ -1,6 +1,7 @@
-const admin = require("firebase-admin");
-require("dotenv").config();
-const serviceAccount = require("../../serviceAccountKey.json");
+import admin from "firebase-admin";
+import dotenv from "dotenv";
+import serviceAccount from "../../serviceAccountKey.json";
+dotenv.config();
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   storageBucket: process.env.STORAGE_BUCKET,
