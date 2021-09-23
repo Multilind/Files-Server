@@ -1,20 +1,20 @@
 import bucket from "../../config/storage";
 const { v4: uuid } = require("uuid");
 export async function create(req, res) {
-    const {params, file} = req;
+    const {params, files} = req;
     const {id_palavra} = params;
-    console.log(file);
-
-    bucket.upload(
-        `${file.destination}${file.filename}`,
-        {
-            destination: `${id_palavra}/${file.originalname}`,
-            metadata:{
-                contentType: file.mimetype, 
-                firebaseStorageDownloadTokens: uuid()
-            },
-            public: true
+    const {file} = files;
+    const blob = bucket.file(`${id_palavra}/${file.name}`);
+    const blobWriter = blob.createWriteStream({
+        metadata:{
+            contentType: file.mimetype
         }
-    );
-    res.send('ok');
+    });
+    blobWriter.on('error', (err) => {
+        res.status(400).send(err);
+    });
+    blobWriter.on('finish', () => {
+        res.status(200).send("File uploaded.");
+    });
+    blobWriter.end(file.data);
 }
