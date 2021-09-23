@@ -1,5 +1,4 @@
 import bucket from "../../config/storage";
-const { v4: uuid } = require("uuid");
 export async function create(req, res) {
     const {params, files} = req;
     const {id_palavra} = params;
