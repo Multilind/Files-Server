@@ -7,6 +7,6 @@ export async function getAll(request, response) {
             prefix: id_palavra+'/'
         }
     );
-    const files_array = files[0].map((file)=>{const {metadata} = file; return {name: metadata.name.match(/images\/(.*)/)[1], url: metadata.selfLink, download_url: metadata.mediaLink}});
+    const files_array = files[0].map((file)=>{const {metadata} = file; return {name: metadata.name.match(/\/(.*)/)[1], url: metadata.selfLink, download_url: metadata.mediaLink}});
     response.send(files_array);
   }
