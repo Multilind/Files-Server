@@ -1,2 +1,2 @@
-export {getAll} from "./getAllFile";
-export {create} from "./createFile";
+export { getAll } from "./getAllFile";
+export { create } from "./createFile";
