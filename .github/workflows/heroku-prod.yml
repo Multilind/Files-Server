@@ -1,4 +1,4 @@
-nome: Deploy to heroku [PROD]
+name: Deploy to heroku [PROD]
 
 on: 
   push:
