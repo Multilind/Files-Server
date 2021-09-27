@@ -1,5 +1,6 @@
+import fileRouters from "./File/file.routes";
+import fileUpload from "express-fileupload";
 export function setUpRoutes(app) {
-  app.use("/api/files", (req, res) => {
-    return res.send("server is up!!");
-  });
+  app.use(fileUpload());
+  app.use("/api/files", fileRouters);
 }
