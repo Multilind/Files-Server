@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      url_user: ${{secrets.URL_ASSETS}}
+      url_assets: ${{secrets.URL_ASSETS}}
     steps:
       - uses: actions/checkout@v2
       
@@ -18,7 +18,7 @@ jobs:
             echo "::set-output name=report_file_name::fga-eps-mds-${{ github.event.repository.name }}-$(date '+%Y-%m-%d-%H:%M')"
 
       - name: Collect sonar metrics
-        run: curl "${{env.url_user}}" > ${{ steps.report.outputs.report_file_name }}.json
+        run: curl "${{env.url_assets}}" > ${{ steps.report.outputs.report_file_name }}.json
 
       - name: Bump version and push tag
         id: tag_version
