@@ -8,6 +8,7 @@ export async function create(req, res) {
     metadata: {
       contentType: file.mimetype,
     },
+    public: true,
   });
   blobWriter.on("error", (err) => {
     res.status(400).send(err);
