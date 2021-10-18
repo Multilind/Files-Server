@@ -13,9 +13,9 @@ export async function create(req, res) {
     metadata: {
       contentType: file.mimetype,
       metadata: {
-        'source': fonte,
-        'author': autor
-      }
+        source: fonte,
+        author: autor,
+      },
     },
     public: true,
   });
