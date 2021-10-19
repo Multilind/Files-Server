@@ -1,7 +1,8 @@
 import bucket from "../../config/storage";
 export async function create(req, res) {
-  const { params, files } = req;
+  const { params, files, body } = req;
   const { id_palavra } = params;
+  const { fonte, autor } = body;
   const file = files?.file;
   if (!file) {
     res.status(401).send("No file sent.");
@@ -11,6 +12,10 @@ export async function create(req, res) {
   const blobWriter = blob.createWriteStream({
     metadata: {
       contentType: file.mimetype,
+      metadata: {
+        source: fonte,
+        author: autor,
+      },
     },
     public: true,
   });
