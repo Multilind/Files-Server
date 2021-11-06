@@ -10,6 +10,8 @@ export async function getAll(req, res) {
       name: metadata.name.match(/\/(.*)/)[1],
       url: metadata.selfLink,
       download_url: metadata.mediaLink,
+      autor: metadata.metadata?.author,
+      fonte: metadata.metadata?.source,
     };
   });
   res.send(files_array);
